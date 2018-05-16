@@ -32,7 +32,6 @@ COPY --from=builder /opt/turtlecoin/build/src/simplewallet .
 COPY --from=builder /opt/turtlecoin/build/src/miner .
 RUN mkdir -p /var/lib/turtlecoind && mkdir /tmp/checkpoints
 ADD https://github.com/turtlecoin/checkpoints/raw/master/checkpoints.csv /tmp/checkpoints
-VOLUME /var/lib/turtlecoind
 WORKDIR /var/lib/turtlecoind
 ENTRYPOINT ["/usr/local/bin/TurtleCoind"]
 CMD ["--no-console","--data-dir","/var/lib/turtlecoind","--rpc-bind-ip","0.0.0.0","--rpc-bind-port","11898","--p2p-bind-port","11897","--enable-cors=*","--enable_blockexplorer","--load-checkpoints","/tmp/checkpoints/checkpoints.csv","--log-file","/var/lib/turtlecoind/TurtleCoind.log"]
