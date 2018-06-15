@@ -18,8 +18,8 @@ RUN apt-get update && \
       libboost-all-dev \
       librocksdb-dev && \
     git clone https://github.com/turtlecoin/turtlecoin.git /opt/turtlecoin && \
-    git checkout development && \
     cd /opt/turtlecoin && \
+    git checkout development && \
     mkdir build && \
     cd build && \
     export CXXFLAGS="-w -std=gnu++11" && \
