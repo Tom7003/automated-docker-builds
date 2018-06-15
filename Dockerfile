@@ -18,6 +18,7 @@ RUN apt-get update && \
       libboost-all-dev \
       librocksdb-dev && \
     git clone https://github.com/turtlecoin/turtlecoin.git /opt/turtlecoin && \
+    git checkout development && \
     cd /opt/turtlecoin && \
     mkdir build && \
     cd build && \
@@ -33,6 +34,7 @@ COPY --from=builder /opt/turtlecoin/build/src/TurtleCoind .
 COPY --from=builder /opt/turtlecoin/build/src/walletd .
 COPY --from=builder /opt/turtlecoin/build/src/simplewallet .
 COPY --from=builder /opt/turtlecoin/build/src/miner .
+COPY --from=builder /opt/turtlecoin/build/src/poolwallet .
 RUN mkdir -p /var/lib/turtlecoind
 WORKDIR /var/lib/turtlecoind
 ADD https://github.com/turtlecoin/checkpoints/raw/master/checkpoints.csv /var/lib/turtlecoind
