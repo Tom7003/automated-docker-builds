@@ -10,6 +10,7 @@ RUN apt-get update && \
     apt-get install -y \
       build-essential \
       gdb \
+      readline-dev \
       python-dev \
       gcc \
       g++\
