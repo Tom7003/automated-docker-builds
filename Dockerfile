@@ -32,7 +32,7 @@ RUN mkdir -p /usr/local/bin && mkdir -p /tmp/checkpoints
 WORKDIR /usr/local/bin
 COPY --from=builder /opt/turtlecoin/build/src/TurtleCoind .
 COPY --from=builder /opt/turtlecoin/build/src/walletd .
-COPY --from=builder /opt/turtlecoin/build/src/simplewallet .
+COPY --from=builder /opt/turtlecoin/build/src/zedwallet .
 COPY --from=builder /opt/turtlecoin/build/src/miner .
 RUN mkdir -p /var/lib/turtlecoind
 WORKDIR /var/lib/turtlecoind
