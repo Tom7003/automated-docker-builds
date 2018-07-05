@@ -28,7 +28,15 @@ RUN apt-get update && \
     make -j$(nproc)
 
 FROM debian:9
+
+# TurtleCoind now needs libreadline 
+RUN apt-get update && \
+    apt-get install -y \
+      libreadline-dev \
+     rm -rf /var/lib/apt/lists/*
+
 RUN mkdir -p /usr/local/bin && mkdir -p /tmp/checkpoints 
+
 WORKDIR /usr/local/bin
 COPY --from=builder /opt/turtlecoin/build/src/TurtleCoind .
 COPY --from=builder /opt/turtlecoin/build/src/walletd .
