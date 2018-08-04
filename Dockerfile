@@ -32,7 +32,8 @@ FROM debian:9
 RUN mkdir -p /usr/local/bin
 WORKDIR /usr/local/bin
 COPY --from=builder /opt/turtlecoin/build/src/TurtleCoind .
-COPY --from=builder /opt/turtlecoin/build/src/service .
+COPY --from=builder /opt/turtlecoin/build/src/poolwallet .
+COPY --from=builder /opt/turtlecoin/build/src/walletd .
 COPY --from=builder /opt/turtlecoin/build/src/zedwallet .
 COPY --from=builder /opt/turtlecoin/build/src/miner .
 RUN mkdir -p /var/lib/turtlecoind
