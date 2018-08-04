@@ -15,9 +15,11 @@ RUN apt-get update && \
       g++\
       git \
       cmake \
+      libreadline-dev \
       libboost-all-dev \
       librocksdb-dev && \
     git clone https://github.com/turtlecoin/turtlecoin.git /opt/turtlecoin && \
+    git checkout tags/v0.6.3 && \
     cd /opt/turtlecoin && \
     mkdir build && \
     cd build && \
@@ -30,7 +32,7 @@ FROM debian:9
 RUN mkdir -p /usr/local/bin
 WORKDIR /usr/local/bin
 COPY --from=builder /opt/turtlecoin/build/src/TurtleCoind .
-COPY --from=builder /opt/turtlecoin/build/src/walletd .
+COPY --from=builder /opt/turtlecoin/build/src/service .
 COPY --from=builder /opt/turtlecoin/build/src/zedwallet .
 COPY --from=builder /opt/turtlecoin/build/src/miner .
 RUN mkdir -p /var/lib/turtlecoind
